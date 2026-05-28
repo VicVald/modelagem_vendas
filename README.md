@@ -26,6 +26,25 @@ Para rodar este projeto na sua máquina, garanta que você tenha as seguintes fe
 - [SDK do .NET](https://dotnet.microsoft.com/download)
 - [Docker](https://www.docker.com/get-started) e [Docker Compose](https://docs.docker.com/compose/install/)
 
+Caso ainda não tenha sido populado crie dentro da api a estrutura de pastas:
+
+```bash
+.
+├──Controllers
+├──DTOs
+├──Services
+├──sql
+```
+
+usando
+
+```bash
+mkdir Controllers
+mkdir DTOs
+mkdir Services
+mkdir sql
+```
+
 ## 🚀 Como Executar o Projeto
 
 Siga o passo a passo abaixo para configurar e iniciar a aplicação no seu ambiente de desenvolvimento:
