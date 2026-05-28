@@ -16,8 +16,8 @@ O projeto foi organizado de forma modular, com as seguintes pastas principais:
 - `Controllers/`: Controladores da API responsáveis por receber as requisições HTTP e retornar as respostas.
 - `Models/`: Classes que representam as entidades de domínio da aplicação.
 - `DTOs/`: Objetos de Transferência de Dados (Data Transfer Objects) usados para trafegar dados com segurança entre o cliente e o servidor.
-- `Services/`: Camada que contém e centraliza a lógica de negócios da aplicação.
 - `sql/`: Diretório que armazena os scripts SQL de criação de tabelas e inserção de dados, os quais são executados automaticamente pelo Flyway.
+- `_specs/`: Contém documentações, decisões arquiteturais (ADR) e instruções padrões (skills) para o desenvolvimento.
 
 ## ⚙️ Pré-requisitos
 
@@ -44,6 +44,15 @@ mkdir DTOs
 mkdir Services
 mkdir sql
 ```
+
+## 📝 Especificações, Skills e Decisões Arquiteturais
+
+O repositório possui um padrão estruturado para documentar decisões de arquitetura e automatizar rotinas (skills padrões) dentro da pasta `_specs/`. Toda vez que for criar ou alterar funcionalidades, ou tomar decisões arquiteturais, siga este formato:
+
+- `_specs/ADR/`: Diretório onde **todas** as Decisões Arquiteturais (Architectural Decision Records) devem ser documentadas.
+- `_specs/cria_feature.md`: Instruções/skill padrão ensinando como criar uma nova feature no sistema.
+- `_specs/altera_feature.md`: Instruções/skill padrão ensinando como alterar uma feature existente.
+- `_specs/commands.md`: Arquivo para registrar comandos base do sistema, como por exemplo: acessar o banco de dados via `docker exec`, acessar os logs do backend usando docker, e outras informações sobre o funcionamento prático.
 
 ## 🚀 Como Executar o Projeto
 
