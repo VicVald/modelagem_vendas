@@ -32,7 +32,7 @@ Caso ainda não tenha sido populado crie dentro da api a estrutura de pastas:
 .
 ├──Controllers
 ├──DTOs
-├──Services
+├──Models
 ├──sql
 ```
 
@@ -41,7 +41,7 @@ usando
 ```bash
 mkdir Controllers
 mkdir DTOs
-mkdir Services
+mkdir Models
 mkdir sql
 ```
 
