@@ -97,3 +97,6 @@ dotnet run
 ```
 
 A API será compilada e iniciada. O próprio terminal mostrará a URL base onde a aplicação está rodando (geralmente `http://localhost:5000` ou `https://localhost:5001`). Acesse essas URLs pelo seu navegador ou por uma ferramenta como Postman/Insomnia para testar os endpoints da sua API, ou acesse a rota do Swagger (ex: `http://localhost:5000/swagger`) se estiver configurado.
+
+
+/teste push
