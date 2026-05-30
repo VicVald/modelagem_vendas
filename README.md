@@ -97,3 +97,68 @@ dotnet run
 ```
 
 A API será compilada e iniciada. O próprio terminal mostrará a URL base onde a aplicação está rodando (geralmente `http://localhost:5000` ou `https://localhost:5001`). Acesse essas URLs pelo seu navegador ou por uma ferramenta como Postman/Insomnia para testar os endpoints da sua API, ou acesse a rota do Swagger (ex: `http://localhost:5000/swagger`) se estiver configurado.
+
+
+## DER do Projeto
+```mermaid
+erDiagram
+
+    CLIENTES {
+        INTEGER id PK
+        VARCHAR nome
+        VARCHAR cpf
+        DATETIME created_at
+    }
+
+    PEDIDOS {
+        INTEGER id PK
+        INTEGER cliente_id FK
+        DECIMAL valor_total
+        DATETIME created_at
+    }
+
+    ITENS_PEDIDOS {
+        INTEGER id PK
+        INTEGER pedido_id FK
+        INTEGER produto_id FK
+        DATETIME created_at
+    }
+
+    PRODUTOS {
+        INTEGER id PK
+        DECIMAL valor
+        INTEGER materiais_id
+    }
+
+    MATERIAIS {
+        INTEGER id PK
+        VARCHAR nome
+        INTEGER quantidade
+        VARCHAR medida
+    }
+
+    MATERIAIS_PRODUTOS {
+        INTEGER id PK
+        INTEGER materiais_id FK
+        INTEGER produtos_id FK
+    }
+
+    HISTORICO_ESTOQUE {
+        INTEGER id PK
+        VARCHAR tipo
+        DATETIME created_at
+        INTEGER materiais_id FK
+    }
+
+    CLIENTES ||--o{ PEDIDOS : realiza
+
+    PEDIDOS ||--o{ ITENS_PEDIDOS : possui
+
+    PRODUTOS ||--o{ ITENS_PEDIDOS : compoe
+
+    PRODUTOS ||--o{ MATERIAIS_PRODUTOS : utiliza
+
+    MATERIAIS ||--o{ MATERIAIS_PRODUTOS : participa
+
+    MATERIAIS ||--o{ HISTORICO_ESTOQUE : movimenta
+```
