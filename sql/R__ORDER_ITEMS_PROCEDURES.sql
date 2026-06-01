@@ -6,6 +6,7 @@ BEGIN
     SET NOCOUNT ON;
     INSERT INTO dbo.itens_pedidos(pedido_id, produto_id)
     VALUES (@pedido_id, @produto_id);
+    SELECT SCOPE_IDENTITY() AS id;
 END;
 GO
 

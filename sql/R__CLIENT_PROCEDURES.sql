@@ -6,6 +6,7 @@ BEGIN
     SET NOCOUNT ON;
     INSERT INTO dbo.clientes(nome, cpf)
     VALUES (@nome, dbo.fn_hash_cpf(@cpf));
+    SELECT SCOPE_IDENTITY() AS id;
 END;
 GO
 

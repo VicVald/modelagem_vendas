@@ -3,34 +3,10 @@ param(
     [string]$lineCommand
 )
 
-# Carregar variáveis do .env, se existir
-if (Test-Path ".env") {
-    Get-Content ".env" | ForEach-Object {
-        if ($_ -and $_ -notmatch '^[\s#]') {
-            if ($_ -match '^(?<name>[^=]+)=(?<value>.*)$') {
-                $name = $matches['name'].Trim()
-                $value = $matches['value'].Trim(' ', '"', "'")
-                Set-Item -Path "Env:$name" -Value $value
-            }
-        }
-    }
-}
-
-$CONTAINER = $env:CONTAINER
-$USER = $env:USER
-$PASSWORD = $env:SA_PASSWORD
-$DATABASE = $env:DATABASE
-
-if (-not $CONTAINER) { $CONTAINER = "gestorvendas_sqlserver" }
-if (-not $USER) { $USER = "sa" }
-if (-not $PASSWORD) {
-    Write-Host "Erro: a variável SA_PASSWORD não está definida no ambiente ou no .env." -ForegroundColor Red
-    exit 1
-}
-if (-not $DATABASE) {
-    Write-Host "Erro: a variável DATABASE não está definida no ambiente ou no .env." -ForegroundColor Red
-    exit 1
-}
+$CONTAINER = "gestorvendas_sqlserver"
+$USER = "sa"
+$PASSWORD = "SenhaForte123@@"
+$DATABASE = "MeuBanco"
 
 $sqlcmd = "/opt/mssql-tools18/bin/sqlcmd"
 

@@ -6,6 +6,7 @@ BEGIN
     SET NOCOUNT ON;
     INSERT INTO dbo.produtos(valor, materiais_id)
     VALUES (@valor, @materiais_id);
+    SELECT SCOPE_IDENTITY() AS id;
 END;
 GO
 

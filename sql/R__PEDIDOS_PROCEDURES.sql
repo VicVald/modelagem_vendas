@@ -6,6 +6,7 @@ BEGIN
     SET NOCOUNT ON;
     INSERT INTO dbo.pedidos(cliente_id, valor_total)
     VALUES (@cliente_id, @valor_total);
+    SELECT SCOPE_IDENTITY() AS id;
 END;
 GO
 
