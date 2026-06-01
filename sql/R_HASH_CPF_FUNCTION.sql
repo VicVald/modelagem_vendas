@@ -8,3 +8,4 @@ BEGIN
 
     RETURN LEFT(CONVERT(VARCHAR(64), @HashBi, 2), 60);
 END;
+

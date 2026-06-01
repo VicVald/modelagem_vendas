@@ -1,12 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CONTAINER="gestorvendas_sqlserver"
-USER="sa"
-PASSWORD="${SA_PASSWORD:-SenhaForte123@@}"
-DATABASE="${DATABASE:-MeuBanco}"
+# Load .env if present
+if [ -f .env ]; then
+  set -a
+  source .env
+  set +a
+fi
+
+CONTAINER="${CONTAINER:-gestorvendas_sqlserver}"
+USER="${USER:-sa}"
+PASSWORD="${SA_PASSWORD:-}"
+DATABASE="${DATABASE:-}"
 SQLCMD_IN_CONTAINER="/opt/mssql-tools18/bin/sqlcmd"
 MSSQL_TOOLS_IMAGE="mcr.microsoft.com/mssql-tools:latest"
+
+if [ -z "$PASSWORD" ] || [ -z "$DATABASE" ]; then
+  echo "Missing required environment variables. Define SA_PASSWORD and DATABASE in .env or the environment." >&2
+  echo "Example .env:" >&2
+  echo "  SA_PASSWORD=SenhaForte123@@" >&2
+  echo "  DATABASE=MeuBanco" >&2
+  exit 1
+fi
 
 print_usage() {
   cat <<EOF
