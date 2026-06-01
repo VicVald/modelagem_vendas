@@ -25,12 +25,13 @@ services:
         condition: service_healthy
     volumes:
       - ./sql:/flyway/sql
-    command: 
-      - "-url=jdbc:sqlserver://sqlserver:1433;databaseName=MeuBanco;encrypt=true;trustServerCertificate=true;"
-      - "-user=sa"
-      - "-password=${SA_PASSWORD}"
-      - "-connectRetries=60"
-      - "migrate"
+    environment:
+      - FLYWAY_URL=jdbc:sqlserver://sqlserver:1433;databaseName=MeuBanco;encrypt=true;trustServerCertificate=true;
+      - FLYWAY_USER=sa
+      - FLYWAY_PASSWORD=${SA_PASSWORD}
+      - FLYWAY_CONNECT_RETRIES=60
+    command: migrate
+
 
 volumes:
   sqlserver-data:

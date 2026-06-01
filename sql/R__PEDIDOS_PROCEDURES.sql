@@ -27,6 +27,9 @@ CREATE OR ALTER PROCEDURE prc_remove_order
 AS
 BEGIN
     SET NOCOUNT ON;
+    DELETE FROM dbo.itens_pedidos
+    WHERE pedido_id = @id;
+
     DELETE FROM dbo.pedidos
     WHERE id = @id;
 END;

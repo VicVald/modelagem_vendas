@@ -19,3 +19,16 @@ docker logs -f gestorvendas_sqlserver
 ```bash
 docker exec -it gestorvendas_sqlserver bash
 ```
+
+## Executar Reparo do Flyway (Alinhamento de Metadados)
+
+```bash
+docker compose run --rm flyway repair
+```
+
+## Executar Migrações do Flyway Manualmente
+
+```bash
+docker compose run --rm flyway migrate
+```
+

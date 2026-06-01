@@ -1,5 +1,5 @@
 CREATE FUNCTION dbo.fn_hash_cpf (@cpf VARCHAR(60))
-RETURN VARCHAR(60)
+RETURNS VARCHAR(60)
 AS
 BEGIN
     DECLARE @Salt VARCHAR(50) = 'ChaveSecretadoVillaGuiné'
@@ -8,4 +8,3 @@ BEGIN
 
     RETURN LEFT(CONVERT(VARCHAR(64), @HashBi, 2), 60);
 END;
-
